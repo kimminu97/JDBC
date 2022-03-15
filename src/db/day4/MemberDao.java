@@ -28,15 +28,18 @@ public class MemberDao {
 				"WHERE mt.CUSTNO =p.custno ORDER BY \"매출\" DESC";
 		// 기본키컬럼 조회결과는 0또는 1개 행입니다.
 		ResultSet rs = null;
-		List<? extends Object> mList = new ArrayList<>();
+		List<String> mList = new ArrayList<>();
 		Member member = null;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				mList.add(rs.getInt(1));
+				mList.add(rs.getString(1));
 				mList.add(rs.getString(2));
+				mList.add(rs.getString(3));
+				mList.add(rs.getString(4));
 			}
+			pstmt.close();
 		}catch(SQLException e) {
 			System.out.println("SQL 실행 오류: "+ e.getMessage());
 		}

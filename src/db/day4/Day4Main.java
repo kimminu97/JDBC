@@ -15,6 +15,13 @@ public class Day4Main {
 				"고객번호","고객성명","고객등급","총매출금액"));
 		for(SaleByCustom vo : list)
 			System.out.println(vo);
+		
+		MemberDao memberDao = MemberDao.getMemMonDao();
+		List<? extends Object> mlist = memberDao.SelectSales();
+		System.out.println(String.format("%-7s%-10s%-10s\t%-10s",
+				"고객번호","고객성명","고객등급","총매출금액"));
+		for(Object md : mlist)
+			System.out.println(md);
 	}
 
 }
